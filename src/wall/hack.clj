@@ -34,3 +34,22 @@
   (-> class (.getDeclaredField (name field-name))
     (doto (.setAccessible true))
     (.get obj)))
+
+(defn mirror
+  "returns an object that if used like (:foo returned-obj) the value
+  of the foo field on the original object will be returned, even if
+  the field is private.
+
+  (:original/object returned-obj) will return the obj that was passed in"
+  [obj]
+  (reify
+    clojure.lang.ILookup
+    (valAt [this k]
+      (.valAt this k nil))
+    (valAt [this k not-found]
+      (if (= k :orginal/object)
+        obj
+        (try
+          (field (class obj) k obj)
+          (catch Exception _
+            not-found))))))
