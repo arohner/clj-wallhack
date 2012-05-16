@@ -14,7 +14,7 @@ Usage
 ```clojure
 (wall.hack/field foo.bar 'field obj)
 ```
-This returns the private/protected field named "field" on obj. class is the class where field is defined, which might be an ancestor of (class obj)
+This returns the private/protected field named "field" on obj. class is the class where field is defined, which might be an ancestor of (class obj). field can be anything named (a string, symbol or keyword).
 
 ```clojure
 (wall.hack/method foo.bar "aMethodCall" [Integer Double] obj 3 5.0)
