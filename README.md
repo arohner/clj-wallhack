@@ -11,11 +11,19 @@ Installation
 
 Usage
 =====
-```clojure
-(wall.hack/field foo.bar 'field obj)
-```
-This returns the private/protected field named "field" on obj. class is the class where field is defined, which might be an ancestor of (class obj). field can be anything named (a string, symbol or keyword).
 
+Getting a field
+---------------
 ```clojure
-(wall.hack/method foo.bar "aMethodCall" [Integer Double] obj 3 5.0)
+(wall.hack/field foo.bar :field obj)
 ```
+This returns the private/protected field named "field", declared in class "foo.bar" on instance obj. obj is an instanceof (or descendant of) class foo.bar. field can be anything named (a string, symbol or keyword).
+
+Calling a method
+----------------
+```clojure
+(wall.hack/method foo.bar :aMethodCall [Integer Double] obj 3 5.0)
+```
+This calls the private/protected method "aMethodCall" on obj. The method is declared in class foo.bar. obj is an instance of, or descendant of class foo.bar. the call takes a seq of classes that correspond to the method's signature, and an equal number of &rest arguments.
+
+Pass nil instead of obj for static method calls.
