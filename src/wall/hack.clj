@@ -47,7 +47,7 @@
     (valAt [this k]
       (.valAt this k nil))
     (valAt [this k not-found]
-      (if (= k :orginal/object)
+      (if (= k :original/object)
         obj
         (try
           (field (class obj) k obj)
