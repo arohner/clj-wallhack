@@ -6,7 +6,7 @@ A library for bypassing private & protect fields & methods on java classes. Extr
 Installation
 ============
 ```clojure
-[clj-wallhack "1.0"]
+[clj-wallhack "1.0.1"]
 ```
 
 Usage
